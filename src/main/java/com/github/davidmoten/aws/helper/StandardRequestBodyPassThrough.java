@@ -15,7 +15,7 @@ public class StandardRequestBodyPassThrough {
     private StandardRequestBodyPassThrough(Map<String, Object> map) {
         this.map = map;
         this.context = (Map<String, String>) map.get("context");
-        this.headers = getHeaders();
+        this.headers = getHeaders(map);
     }
 
     public static StandardRequestBodyPassThrough from(Map<String, Object> input) {
@@ -23,7 +23,7 @@ public class StandardRequestBodyPassThrough {
     }
 
     @SuppressWarnings("unchecked")
-    private Map<String, Object> params() {
+    private static Map<String, Object> params(Map<String,Object> map) {
         Map<String, Object> m = (Map<String, Object>) ((Map<String, Object>) map.get("params"));
         if (m == null)
             return Collections.emptyMap();
@@ -32,8 +32,8 @@ public class StandardRequestBodyPassThrough {
     }
 
     @SuppressWarnings("unchecked")
-    private Map<String, String> getHeaders() {
-        Map<String, String> m = (Map<String, String>) params().get("header");
+    private static Map<String, String> getHeaders(Map<String,Object> map) {
+        Map<String, String> m = (Map<String, String>) params(map).get("header");
         if (m== null)
             return Collections.emptyMap();
         else {
@@ -52,7 +52,7 @@ public class StandardRequestBodyPassThrough {
 
     @SuppressWarnings("unchecked")
     public Map<String, String> queryStringParameters() {
-        Map<String, String> m = (Map<String, String>) params().get("querystring");
+        Map<String, String> m = (Map<String, String>) params(map).get("querystring");
         if (m == null)
             return Collections.emptyMap();
         else
@@ -65,7 +65,7 @@ public class StandardRequestBodyPassThrough {
 
     @SuppressWarnings("unchecked")
     public Map<String, String> stageVariables() {
-        Map<String, String> m = (Map<String, String>) params().get("stage-variables");
+        Map<String, String> m = (Map<String, String>) params(map).get("stage-variables");
         if (m == null)
             return Collections.emptyMap();
         else
