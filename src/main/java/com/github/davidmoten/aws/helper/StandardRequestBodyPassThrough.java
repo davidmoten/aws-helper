@@ -13,9 +13,9 @@ public class StandardRequestBodyPassThrough {
 
     @SuppressWarnings("unchecked")
     private StandardRequestBodyPassThrough(Map<String, Object> map) {
-        this.map = map;
-        this.context = (Map<String, String>) map.get("context");
-        this.headers = getHeaders(map);
+        this.map = map==null? Collections.emptyMap():map;
+        this.context = (Map<String, String>) this.map.get("context");
+        this.headers = getHeaders(this.map);
     }
 
     public static StandardRequestBodyPassThrough from(Map<String, Object> input) {
