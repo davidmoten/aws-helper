@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.github.davidmoten</groupId>
+		<artifactId>sonatype-parent</artifactId>
+		<version>0.1</version>
+	</parent>
+	<artifactId>aws-helper</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<name>${project.artifactId}</name>
+	<description>Utilities for AWS</description>
+	<packaging>jar</packaging>
+
+	<url>http://github.com/davidmoten/aws-helper</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
+	<ciManagement>
+		<system>Travis</system>
+		<url>https://travis-ci.org/davidmoten/aws-helper</url>
+	</ciManagement>
+
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/davidmoten/aws-helper/issues</url>
+	</issueManagement>
+
+	<inceptionYear>2016</inceptionYear>
+	<developers>
+		<developer>
+			<id>dave</id>
+			<name>Dave Moten</name>
+			<url>https://github.com/davidmoten/</url>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>+10</timezone>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/davidmoten/aws-helper.git</connection>
+		<developerConnection>scm:git:https://github.com/davidmoten/aws-helper.git</developerConnection>
+		<url>scm:git:https://github.com:davidmoten/aws-helper.git</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.davidmoten</groupId>
+			<artifactId>junit-extras</artifactId>
+			<version>0.3</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>${maven.compiler.target}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
