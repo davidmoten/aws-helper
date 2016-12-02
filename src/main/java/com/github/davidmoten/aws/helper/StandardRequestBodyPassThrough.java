@@ -146,7 +146,7 @@ public class StandardRequestBodyPassThrough {
     }
 
     public Optional<String> resourceId() {
-        return c("resourceId");
+        return c("resource-id");
     }
 
     public Optional<String> resourcePath() {

@@ -142,6 +142,25 @@ public class StandardRequestBodyPassThroughTest {
         StandardRequestBodyPassThrough r = insertContext("cognito-identity-pool-id");
         assertEquals("thevalue", r.cognitoIdentityPoolId().get());
     }
+    
+    @Test
+    public void httpMethod() {
+        StandardRequestBodyPassThrough r = insertContext("http-method");
+        assertEquals("thevalue", r.httpMethod().get());
+    }
+    
+    @Test
+    public void requestId() {
+        StandardRequestBodyPassThrough r = insertContext("request-id");
+        assertEquals("thevalue", r.requestId().get());
+    }
+    
+    @Test
+    public void resourceId() {
+        StandardRequestBodyPassThrough r = insertContext("resource-id");
+        assertEquals("thevalue", r.resourceId().get());
+    }
+
 
     private StandardRequestBodyPassThrough insertContext(String key) {
         Map<String, Object> map = new HashMap<>();
