@@ -85,10 +85,8 @@ public class StandardRequestBodyPassThroughTest {
     @Test
     public void testStageVariableExists() {
         Map<String, Object> map = new HashMap<>();
-        Map<String, Object> params = new HashMap<>();
-        map.put("params", params);
         Map<String, Object> sv = new HashMap<>();
-        params.put("stage-variables", sv);
+        map.put("stage-variables", sv);
         sv.put("a", "thevalue");
         StandardRequestBodyPassThrough r = StandardRequestBodyPassThrough.from(map);
         assertTrue(r.stageVariables("a").isPresent());
@@ -195,17 +193,15 @@ public class StandardRequestBodyPassThroughTest {
     @Test
     public void testToString() {
         StandardRequestBodyPassThrough r = insertContext("user-arn");
-        assertEquals("{params={context={user-arn=thevalue}}}", r.toString());
+        assertEquals("{context={user-arn=thevalue}}", r.toString());
     }
 
 
     private StandardRequestBodyPassThrough insertContext(String key) {
         Map<String, Object> map = new HashMap<>();
-        Map<String, Object> params = new HashMap<>();
-        map.put("params", params);
         Map<String, String> m = new HashMap<>();
         m.put(key, "thevalue");
-        params.put("context", m);
+        map.put("context", m);
         return StandardRequestBodyPassThrough.from(map);
     }
 }

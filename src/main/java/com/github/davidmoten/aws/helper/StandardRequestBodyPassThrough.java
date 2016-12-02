@@ -14,7 +14,7 @@ public final class StandardRequestBodyPassThrough {
     @SuppressWarnings("unchecked")
     private StandardRequestBodyPassThrough(Map<String, Object> m) {
         this.map = m==null? Collections.emptyMap():m;
-        this.context = (Map<String, String>) params(map).get("context");
+        this.context = (Map<String, String>) map.get("context");
         this.headers = getHeaders(map);
     }
 
@@ -65,7 +65,7 @@ public final class StandardRequestBodyPassThrough {
 
     @SuppressWarnings("unchecked")
     public Map<String, String> stageVariables() {
-        Map<String, String> m = (Map<String, String>) params(map).get("stage-variables");
+        Map<String, String> m = (Map<String, String>) map.get("stage-variables");
         if (m == null)
             return Collections.emptyMap();
         else
