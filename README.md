@@ -1,7 +1,7 @@
 aws-helper
 ============
 <a href="https://travis-ci.org/davidmoten/aws-helper"><img src="https://travis-ci.org/davidmoten/aws-helper.svg"/></a><br/>
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.davidmoten/aws-helper/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.github.davidmoten/aws-helper)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.davidmoten/aws-helper/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.github.davidmoten/aws-helper)<br/>
 [![codecov](https://codecov.io/gh/davidmoten/aws-helper/branch/master/graph/badge.svg)](https://codecov.io/gh/davidmoten/aws-helper)
 
 Utilities to add type-safety in Java AWS Lambdas with API Gateway.
