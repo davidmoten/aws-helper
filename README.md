@@ -19,6 +19,9 @@ public class RequestHandler {
         StandardRequestBodyPassThrough request = StandardRequestBodyPassThrough.from(input);
         
         log.debug("http-request=" + request.httpRequest());
+        log.debug("user=" + request.user());
+        log.debug("api-id=" + request.apiId());
+        log.debug("source-ip="+ request.sourceIp());
         ...
     }
 }       
