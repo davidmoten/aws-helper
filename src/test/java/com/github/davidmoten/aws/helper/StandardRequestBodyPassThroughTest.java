@@ -160,6 +160,19 @@ public class StandardRequestBodyPassThroughTest {
         StandardRequestBodyPassThrough r = insertContext("resource-id");
         assertEquals("thevalue", r.resourceId().get());
     }
+    
+    @Test
+    public void resourcePath() {
+        StandardRequestBodyPassThrough r = insertContext("resource-path");
+        assertEquals("thevalue", r.resourcePath().get());
+    }
+
+    
+    @Test
+    public void sourceIp() {
+        StandardRequestBodyPassThrough r = insertContext("source-ip");
+        assertEquals("thevalue", r.sourceIp().get());
+    }
 
 
     private StandardRequestBodyPassThrough insertContext(String key) {
