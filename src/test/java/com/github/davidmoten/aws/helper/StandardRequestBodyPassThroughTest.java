@@ -81,5 +81,18 @@ public class StandardRequestBodyPassThroughTest {
         assertTrue(r.queryStringParameter("a").isPresent());
         assertEquals("thevalue",r.queryStringParameter("a").get());
     }
+    
+    @Test
+    public void testStageVariableExists() {
+        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> params = new HashMap<>();
+        map.put("params", params);
+        Map<String, Object> sv = new HashMap<>();
+        params.put("stage-variables", sv);
+        sv.put("a", "thevalue");
+        StandardRequestBodyPassThrough r = StandardRequestBodyPassThrough.from(map);
+        assertTrue(r.stageVariables("a").isPresent());
+        assertEquals("thevalue",r.stageVariables("a").get());
+    }
 
 }
