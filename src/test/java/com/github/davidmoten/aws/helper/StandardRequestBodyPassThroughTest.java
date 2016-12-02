@@ -173,6 +173,30 @@ public class StandardRequestBodyPassThroughTest {
         StandardRequestBodyPassThrough r = insertContext("source-ip");
         assertEquals("thevalue", r.sourceIp().get());
     }
+    
+    @Test
+    public void stage() {
+        StandardRequestBodyPassThrough r = insertContext("stage");
+        assertEquals("thevalue", r.stage().get());
+    }
+    
+    @Test
+    public void user() {
+        StandardRequestBodyPassThrough r = insertContext("user");
+        assertEquals("thevalue", r.user().get());
+    }
+    
+    @Test
+    public void userArn() {
+        StandardRequestBodyPassThrough r = insertContext("user-arn");
+        assertEquals("thevalue", r.userArn().get());
+    }
+    
+    @Test
+    public void testToString() {
+        StandardRequestBodyPassThrough r = insertContext("user-arn");
+        assertEquals("{params={context={user-arn=thevalue}}}", r.toString());
+    }
 
 
     private StandardRequestBodyPassThrough insertContext(String key) {
