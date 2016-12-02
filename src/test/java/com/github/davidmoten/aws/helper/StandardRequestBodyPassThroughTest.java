@@ -131,6 +131,12 @@ public class StandardRequestBodyPassThroughTest {
         StandardRequestBodyPassThrough r = insertContext("cognito-authentication-provider");
         assertEquals("thevalue", r.cognitoAuthenticationProvider().get());
     }
+    
+    @Test
+    public void testCognitoAuthenticationTypeExists() {
+        StandardRequestBodyPassThrough r = insertContext("cognito-authentication-type");
+        assertEquals("thevalue", r.cognitoAuthenticationType().get());
+    }
 
     private StandardRequestBodyPassThrough insertContext(String key) {
         Map<String, Object> map = new HashMap<>();
