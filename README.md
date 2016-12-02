@@ -32,10 +32,10 @@ public class RequestHandler {
         // expects full request body passthrough from api gateway integration request
         StandardRequestBodyPassThrough request = StandardRequestBodyPassThrough.from(input);
         
-        log.debug("http-request=" + request.httpRequest());
-        log.debug("user=" + request.user());
-        log.debug("api-id=" + request.apiId());
-        log.debug("source-ip="+ request.sourceIp());
+        log.debug("http-request=" + request.httpRequest().orElse(""));
+        log.debug("user=" + request.user().orElse(""));
+        log.debug("api-id=" + request.apiId().orElse(""));
+        log.debug("source-ip="+ request.sourceIp().orElse(""));
         ...
     }
 }       
