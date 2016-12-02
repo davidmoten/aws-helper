@@ -106,36 +106,41 @@ public class StandardRequestBodyPassThroughTest {
         StandardRequestBodyPassThrough r = insertContext("api-id");
         assertEquals("thevalue", r.apiId().get());
     }
-    
+
     @Test
     public void testApiKeyExists() {
         StandardRequestBodyPassThrough r = insertContext("api-key");
         assertEquals("thevalue", r.apiKey().get());
     }
-    
+
     @Test
     public void testAuthorizerPrincipalIdExists() {
         StandardRequestBodyPassThrough r = insertContext("authorizer-principal-id");
         assertEquals("thevalue", r.authorizerPrincipalId().get());
     }
-    
+
     @Test
     public void testCallerExists() {
         StandardRequestBodyPassThrough r = insertContext("caller");
         assertEquals("thevalue", r.caller().get());
     }
 
-    
     @Test
     public void testCognitoAuthenticationProviderExists() {
         StandardRequestBodyPassThrough r = insertContext("cognito-authentication-provider");
         assertEquals("thevalue", r.cognitoAuthenticationProvider().get());
     }
-    
+
     @Test
     public void testCognitoAuthenticationTypeExists() {
         StandardRequestBodyPassThrough r = insertContext("cognito-authentication-type");
         assertEquals("thevalue", r.cognitoAuthenticationType().get());
+    }
+
+    @Test
+    public void cognitoIdentityPoolIdExists() {
+        StandardRequestBodyPassThrough r = insertContext("cognito-identity-pool-id");
+        assertEquals("thevalue", r.cognitoIdentityPoolId().get());
     }
 
     private StandardRequestBodyPassThrough insertContext(String key) {
