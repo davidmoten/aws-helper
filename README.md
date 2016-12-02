@@ -1,51 +1,23 @@
 # aws-helper
 type-safety additions for Java AWS Lambda with API Gateway.
 
-When a request is mapped through from an API to a Lambda the default pass-through json body looks like this:
+When a request is mapped through from an API to a Lambda the pass-through json body template looks like [this](src/docs/pass-through-body-mapping-template.txt).
 
-```
-##  See http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html
-##  This template will pass through all parameters including path, querystring, header, stage variables, and context through to the integration endpoint via the body/payload
-#set($allParams = $input.params())
-{
-"body-json" : $input.json('$'),
-"params" : {
-#foreach($type in $allParams.keySet())
-    #set($params = $allParams.get($type))
-"$type" : {
-    #foreach($paramName in $params.keySet())
-    "$paramName" : "$util.escapeJavaScript($params.get($paramName))"
-        #if($foreach.hasNext),#end
-    #end
-}
-    #if($foreach.hasNext),#end
-#end
-},
-"stage-variables" : {
-#foreach($key in $stageVariables.keySet())
-"$key" : "$util.escapeJavaScript($stageVariables.get($key))"
-    #if($foreach.hasNext),#end
-#end
-},
-"context" : {
-    "account-id" : "$context.identity.accountId",
-    "api-id" : "$context.apiId",
-    "api-key" : "$context.identity.apiKey",
-    "authorizer-principal-id" : "$context.authorizer.principalId",
-    "caller" : "$context.identity.caller",
-    "cognito-authentication-provider" : "$context.identity.cognitoAuthenticationProvider",
-    "cognito-authentication-type" : "$context.identity.cognitoAuthenticationType",
-    "cognito-identity-id" : "$context.identity.cognitoIdentityId",
-    "cognito-identity-pool-id" : "$context.identity.cognitoIdentityPoolId",
-    "http-method" : "$context.httpMethod",
-    "stage" : "$context.stage",
-    "source-ip" : "$context.identity.sourceIp",
-    "user" : "$context.identity.user",
-    "user-agent" : "$context.identity.userAgent",
-    "user-arn" : "$context.identity.userArn",
-    "request-id" : "$context.requestId",
-    "resource-id" : "$context.resourceId",
-    "resource-path" : "$context.resourcePath"
+When you want to deal with the body in a java Lambda navigating this bit of json is fraught with difficulties of nested maps that may or may not be present and the possibility of spellling mistakes. 
+
+For these reasons you can do this in a java Lambda:
+
+```java
+public class RequestHandler {
+
+    public String getResult(Map<String, Object> input, Context context) {
+        LambdaLogger log = context.getLogger();
+        
+        // expects full request body passthrough from api gateway integration request
+        StandardRequestBodyPassThrough request = StandardRequestBodyPassThrough.from(input);
+        
+        log.debug("http-request=" + request.httpRequest());
+        ...
     }
-}
+}       
 ```
