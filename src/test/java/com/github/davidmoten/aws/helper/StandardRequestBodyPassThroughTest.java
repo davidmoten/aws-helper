@@ -98,16 +98,27 @@ public class StandardRequestBodyPassThroughTest {
     @Test
     public void testAccountIdExists() {
         StandardRequestBodyPassThrough r = insertContext("account-id");
-        assertTrue(r.accountId().isPresent());
         assertEquals("thevalue", r.accountId().get());
     }
 
     @Test
     public void testApiIdExists() {
         StandardRequestBodyPassThrough r = insertContext("api-id");
-        assertTrue(r.apiId().isPresent());
         assertEquals("thevalue", r.apiId().get());
     }
+    
+    @Test
+    public void testApiKeyExists() {
+        StandardRequestBodyPassThrough r = insertContext("api-key");
+        assertEquals("thevalue", r.apiKey().get());
+    }
+    
+    @Test
+    public void testAuthorizerPrincipalIdExists() {
+        StandardRequestBodyPassThrough r = insertContext("authorizer-principal-id");
+        assertEquals("thevalue", r.authorizerPrincipalId().get());
+    }
+
 
     private StandardRequestBodyPassThrough insertContext(String key) {
         Map<String, Object> map = new HashMap<>();
