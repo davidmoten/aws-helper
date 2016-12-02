@@ -12,10 +12,10 @@ public class StandardRequestBodyPassThrough {
     private final Map<String, String> headers;
 
     @SuppressWarnings("unchecked")
-    private StandardRequestBodyPassThrough(Map<String, Object> map) {
-        this.map = map==null? Collections.emptyMap():map;
-        this.context = (Map<String, String>) this.map.get("context");
-        this.headers = getHeaders(this.map);
+    private StandardRequestBodyPassThrough(Map<String, Object> m) {
+        this.map = m==null? Collections.emptyMap():m;
+        this.context = (Map<String, String>) params(map).get("context");
+        this.headers = getHeaders(map);
     }
 
     public static StandardRequestBodyPassThrough from(Map<String, Object> input) {
@@ -74,7 +74,7 @@ public class StandardRequestBodyPassThrough {
 
     @Override
     public String toString() {
-        return String.valueOf(context);
+        return String.valueOf(map);
     }
 
     private Optional<String> c(String key) {

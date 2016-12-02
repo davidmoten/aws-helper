@@ -36,7 +36,7 @@ public class StandardRequestBodyPassThroughTest {
         StandardRequestBodyPassThrough r = StandardRequestBodyPassThrough.from(map);
         assertFalse(r.queryStringParameter("a").isPresent());
     }
-    
+
     @Test
     public void testEmptyStageVariables() {
         Map<String, Object> map = new HashMap<>();
@@ -55,7 +55,7 @@ public class StandardRequestBodyPassThroughTest {
         StandardRequestBodyPassThrough r = StandardRequestBodyPassThrough.from(map);
         assertFalse(r.header("a").isPresent());
     }
-    
+
     @Test
     public void testHeaderExists() {
         Map<String, Object> map = new HashMap<>();
@@ -66,9 +66,9 @@ public class StandardRequestBodyPassThroughTest {
         params.put("header", headers);
         StandardRequestBodyPassThrough r = StandardRequestBodyPassThrough.from(map);
         assertTrue(r.header("a").isPresent());
-        assertEquals("thevalue",r.header("a").get());
+        assertEquals("thevalue", r.header("a").get());
     }
-    
+
     @Test
     public void testQueryParametersExist() {
         Map<String, Object> map = new HashMap<>();
@@ -79,9 +79,9 @@ public class StandardRequestBodyPassThroughTest {
         params.put("querystring", m);
         StandardRequestBodyPassThrough r = StandardRequestBodyPassThrough.from(map);
         assertTrue(r.queryStringParameter("a").isPresent());
-        assertEquals("thevalue",r.queryStringParameter("a").get());
+        assertEquals("thevalue", r.queryStringParameter("a").get());
     }
-    
+
     @Test
     public void testStageVariableExists() {
         Map<String, Object> map = new HashMap<>();
@@ -92,7 +92,30 @@ public class StandardRequestBodyPassThroughTest {
         sv.put("a", "thevalue");
         StandardRequestBodyPassThrough r = StandardRequestBodyPassThrough.from(map);
         assertTrue(r.stageVariables("a").isPresent());
-        assertEquals("thevalue",r.stageVariables("a").get());
+        assertEquals("thevalue", r.stageVariables("a").get());
     }
 
+    @Test
+    public void testAccountIdExists() {
+        StandardRequestBodyPassThrough r = insertContext("account-id");
+        assertTrue(r.accountId().isPresent());
+        assertEquals("thevalue", r.accountId().get());
+    }
+
+    @Test
+    public void testApiIdExists() {
+        StandardRequestBodyPassThrough r = insertContext("api-id");
+        assertTrue(r.apiId().isPresent());
+        assertEquals("thevalue", r.apiId().get());
+    }
+
+    private StandardRequestBodyPassThrough insertContext(String key) {
+        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> params = new HashMap<>();
+        map.put("params", params);
+        Map<String, String> m = new HashMap<>();
+        m.put(key, "thevalue");
+        params.put("context", m);
+        return StandardRequestBodyPassThrough.from(map);
+    }
 }
