@@ -3,7 +3,7 @@ type-safety additions for Java AWS Lambda with API Gateway.
 
 When a request is mapped through from an API to a Lambda the default pass-through json body looks like this:
 
-```json
+```
 ##  See http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html
 ##  This template will pass through all parameters including path, querystring, header, stage variables, and context through to the integration endpoint via the body/payload
 #set($allParams = $input.params())
