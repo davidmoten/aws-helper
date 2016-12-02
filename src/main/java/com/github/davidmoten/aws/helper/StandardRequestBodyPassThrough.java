@@ -153,6 +153,10 @@ public class StandardRequestBodyPassThrough {
         return c("resource-path");
     }
 
+    public Optional<String> stageVariables(String key) {
+        return Optional.ofNullable(stageVariables().get(key));
+    }
+
     // {body-json={}, params={path={}, querystring={boo=2, hello=true},
     // header={Accept=*/*, CloudFront-Forwarded-Proto=https,
     // CloudFront-Is-Desktop-Viewer=true, CloudFront-Is-Mobile-Viewer=false,
