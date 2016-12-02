@@ -62,7 +62,8 @@ public class StandardRequestBodyPassThroughTest {
         Map<String, Object> params = new HashMap<>();
         map.put("params", params);
         Map<String, String> headers = new HashMap<>();
-        headers.put("a", "thevalue");
+        //case insensitive
+        headers.put("A", "thevalue");
         params.put("header", headers);
         StandardRequestBodyPassThrough r = StandardRequestBodyPassThrough.from(map);
         assertTrue(r.header("a").isPresent());

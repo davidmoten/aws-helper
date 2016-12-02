@@ -133,10 +133,6 @@ public class StandardRequestBodyPassThrough {
         return c("user");
     }
 
-    public Optional<String> userAgent() {
-        return c("user-agent");
-    }
-
     public Optional<String> userArn() {
         return c("user-arn");
     }
