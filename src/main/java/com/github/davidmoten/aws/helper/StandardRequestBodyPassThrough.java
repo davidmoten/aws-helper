@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class StandardRequestBodyPassThrough {
+public final class StandardRequestBodyPassThrough {
 
     private final Map<String, Object> map;
     private final Map<String, String> context;
@@ -161,9 +161,9 @@ public class StandardRequestBodyPassThrough {
     // Host=w0ik4qs1c7.execute-api.ap-southeast-2.amazonaws.com,
     // User-Agent=curl/7.35.0, Via=1.1
     // 5672636208e8fb405fd765eca1216f8a.cloudfront.net (CloudFront),
-    // X-Amz-Cf-Id=bp5msOV06nJe1Ow27e6OMxRHnRcsMXgrRGoKWilToxcMGnC49cRgsg==,
+    // X-Amz-Cf-Id=bp5msOV06nJe1Ow27e6OMxRHnRcsMXgrRGoKW9cRgsg==,
     // x-api-key=W,
-    // X-Forwarded-For=60.242.107.227, 54.240.152.12, X-Forwarded-Port=443,
+    // X-Forwarded-For=60.242.1,23, 54.24.12.34 X-Forwarded-Port=443,
     // X-Forwarded-Proto=https}},
     // stage-variables={function=get-craftpic-dev}, context={account-id=,
     // api-id=w0ik4qs1c7, api-key=Wc
@@ -171,7 +171,7 @@ public class StandardRequestBodyPassThrough {
     // cognito-authentication-type=, cognito-identity-id=,
     // cognito-identity-pool-id=, http-method=GET, stage=dev,
     // source-ip=60.242.107.227, user=, user-agent=curl/7.35.0, user-arn=,
-    // request-id=8501b909-b7f2-11e6-b832-d17a9c3e75e7, resource-id=a10fd5,
+    // request-id=8501b909-b7f2-11e6-b832-dhjkjhkjc3e75e7, resource-id=a10fd5,
     // resource-path=/check}}
 
 }
