@@ -6,8 +6,17 @@ aws-helper
 
 Utilities to add type-safety in Java AWS Lambdas with API Gateway.
 
+##Getting started
+Add this dependency to your pom.xml. It has no transitive dependencies.
+```xml
+<dependency>
+    <groupId>com.github.davidmoten</groupId>
+	<artifactId>aws-helper</artifactId>
+	<version>0.1</version>
+</dependency>
+```
 
-#StandardRequestBodyPassThrough.from
+##StandardRequestBodyPassThrough.from
 When a request is mapped through from an API to a Lambda the *pass-through* json body template looks like [this](src/docs/pass-through-body-mapping-template.txt).
 
 When you want to deal with the body in a java Lambda navigating this bit of json is fraught with difficulties of nested maps that may or may not be present and the possibility of spellling mistakes. 
