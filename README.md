@@ -11,8 +11,8 @@ Add this dependency to your pom.xml. It has no transitive dependencies.
 ```xml
 <dependency>
     <groupId>com.github.davidmoten</groupId>
-	<artifactId>aws-helper</artifactId>
-	<version>0.1</version>
+    <artifactId>aws-helper</artifactId>
+    <version>0.2.1</version>
 </dependency>
 ```
 
