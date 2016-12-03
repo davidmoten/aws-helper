@@ -74,8 +74,8 @@ public class AuthPolicy {
         for (int i = 0; i < statements.length; i++) {
             Map<String, Object> serializableStatement = new HashMap<>();
             AuthPolicy.Statement statement = statements[i];
-            serializableStatement.put(EFFECT, statement.Effect);
-            serializableStatement.put(ACTION, statement.Action);
+            serializableStatement.put(EFFECT, statement.effect);
+            serializableStatement.put(ACTION, statement.action);
             serializableStatement.put(RESOURCE, statement.getResource());
             serializableStatement.put(CONDITION, statement.getCondition());
             serializableStatementArray[i] = serializableStatement;
@@ -224,9 +224,9 @@ public class AuthPolicy {
 
     static class Statement {
 
-        String Effect;
-        String Action;
-        Map<String, Map<String, Object>> Condition;
+        String effect;
+        String action;
+        Map<String, Map<String, Object>> condition;
 
         private List<String> resourceList;
 
@@ -235,10 +235,10 @@ public class AuthPolicy {
         }
 
         public Statement(String effect, String action, List<String> resourceList, Map<String, Map<String, Object>> condition) {
-            this.Effect = effect;
-            this.Action = action;
+            this.effect = effect;
+            this.action = action;
             this.resourceList = resourceList;
-            this.Condition = condition;
+            this.condition = condition;
         }
 
         public static Statement getEmptyInvokeStatement(String effect) {
@@ -246,19 +246,19 @@ public class AuthPolicy {
         }
 
         public String getEffect() {
-            return Effect;
+            return effect;
         }
 
         public void setEffect(String effect) {
-            this.Effect = effect;
+            this.effect = effect;
         }
 
         public String getAction() {
-            return Action;
+            return action;
         }
 
         public void setAction(String action) {
-            this.Action = action;
+            this.action = action;
         }
 
         public String[] getResource() {
@@ -270,11 +270,11 @@ public class AuthPolicy {
         }
 
         public Map<String, Map<String,Object>> getCondition() {
-            return Condition;
+            return condition;
         }
 
         public void addCondition(String operator, String key, Object value) {
-            Condition.put(operator, Collections.singletonMap(key, value));
+            condition.put(operator, Collections.singletonMap(key, value));
         }
 
     }
