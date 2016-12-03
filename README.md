@@ -30,6 +30,7 @@ public class RequestHandler {
         // expects full request body passthrough from api gateway integration request
         StandardRequestBodyPassThrough request = StandardRequestBodyPassThrough.from(input);
         
+	//get info from input in a type-safe way using java.util.Optional
         log.debug("http-request=" + request.httpRequest().orElse(""));
         log.debug("user=" + request.user().orElse(""));
         log.debug("api-id=" + request.apiId().orElse(""));
