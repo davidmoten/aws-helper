@@ -13,7 +13,7 @@ public final class StandardRequestBodyPassThrough {
 
     @SuppressWarnings("unchecked")
     private StandardRequestBodyPassThrough(Map<String, Object> m) {
-        this.map = m==null? Collections.emptyMap():m;
+        this.map = m == null ? Collections.emptyMap() : m;
         this.context = (Map<String, String>) map.get("context");
         this.headers = getHeaders(map);
     }
@@ -23,7 +23,7 @@ public final class StandardRequestBodyPassThrough {
     }
 
     @SuppressWarnings("unchecked")
-    private static Map<String, Object> params(Map<String,Object> map) {
+    private static Map<String, Object> params(Map<String, Object> map) {
         Map<String, Object> m = (Map<String, Object>) ((Map<String, Object>) map.get("params"));
         if (m == null)
             return Collections.emptyMap();
@@ -32,22 +32,22 @@ public final class StandardRequestBodyPassThrough {
     }
 
     @SuppressWarnings("unchecked")
-    private static Map<String, String> getHeaders(Map<String,Object> map) {
+    private static Map<String, String> getHeaders(Map<String, Object> map) {
         Map<String, String> m = (Map<String, String>) params(map).get("header");
-        if (m== null)
+        if (m == null)
             return Collections.emptyMap();
         else {
-            return m.entrySet().stream()
-                    .collect(Collectors.toMap(x -> x.getKey().toLowerCase(), x -> x.getValue()));
+            return m.entrySet().stream().collect(Collectors.toMap(x -> x.getKey().toLowerCase(),
+                    x -> x.getValue()));
         }
     }
-    
-    public Map<String,String> headers() {
+
+    public Map<String, String> headers() {
         return headers;
     }
 
     public Optional<String> header(String name) {
-        return Optional.ofNullable(headers.get(name));
+        return Optional.ofNullable(headers.get(name.toLowerCase()));
     }
 
     @SuppressWarnings("unchecked")

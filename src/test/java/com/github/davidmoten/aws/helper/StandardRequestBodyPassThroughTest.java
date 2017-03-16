@@ -67,6 +67,7 @@ public class StandardRequestBodyPassThroughTest {
         StandardRequestBodyPassThrough r = StandardRequestBodyPassThrough.from(map);
         assertTrue(r.header("a").isPresent());
         assertEquals("thevalue", r.header("a").get());
+        assertEquals("thevalue", r.header("A").get());
     }
 
     @Test
