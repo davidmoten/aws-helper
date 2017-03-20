@@ -12,7 +12,7 @@ Add this dependency to your pom.xml. It has no transitive dependencies.
 <dependency>
     <groupId>com.github.davidmoten</groupId>
     <artifactId>aws-helper</artifactId>
-    <version>0.2.1</version>
+    <version>0.2.2</version>
 </dependency>
 ```
 
