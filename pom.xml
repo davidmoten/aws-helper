@@ -67,21 +67,21 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-lambda-java-core</artifactId>
-			<version>1.1.0</version>
+			<version>1.2.1</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>com.github.davidmoten</groupId>
 			<artifactId>junit-extras</artifactId>
-			<version>0.3</version>
+			<version>0.4</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -91,7 +91,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
+				<version>3.8.1</version>
 				<configuration>
 					<source>${maven.compiler.target}</source>
 					<target>${maven.compiler.target}</target>
@@ -100,7 +100,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.7.5.201505241946</version>
+				<version>0.8.6</version>
 				<executions>
 					<execution>
 						<goals>
