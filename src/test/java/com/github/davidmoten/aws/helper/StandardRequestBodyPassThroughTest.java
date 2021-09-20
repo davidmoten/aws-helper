@@ -77,7 +77,7 @@ public class StandardRequestBodyPassThroughTest {
         map.put("params", params);
         Map<String, String> m = new HashMap<>();
         m.put("a", "thevalue");
-        params.put("querystring", m);
+        map.put("querystring", m);
         StandardRequestBodyPassThrough r = StandardRequestBodyPassThrough.from(map);
         assertTrue(r.queryStringParameter("a").isPresent());
         assertEquals("thevalue", r.queryStringParameter("a").get());

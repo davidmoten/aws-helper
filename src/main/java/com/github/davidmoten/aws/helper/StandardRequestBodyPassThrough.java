@@ -50,18 +50,6 @@ public final class StandardRequestBodyPassThrough {
         return Optional.ofNullable(headers.get(name.toLowerCase()));
     }
 
-    @SuppressWarnings("unchecked")
-    public Map<String, String> queryStringParameters() {
-        Map<String, String> m = (Map<String, String>) params(map).get("querystring");
-        if (m == null)
-            return Collections.emptyMap();
-        else
-            return m;
-    }
-
-    public Optional<String> queryStringParameter(String key) {
-        return Optional.ofNullable(queryStringParameters().get(key));
-    }
 
     @SuppressWarnings("unchecked")
     public Map<String, String> stageVariables() {
@@ -151,6 +139,16 @@ public final class StandardRequestBodyPassThrough {
 
     public Optional<String> stageVariables(String key) {
         return Optional.ofNullable(stageVariables().get(key));
+    }
+
+    public Optional<String> queryStringParameter(String name) {
+        @SuppressWarnings("unchecked")
+        Map<String, String> m = (Map<String, String>) map.get("querystring");
+        if (m == null) {
+            return Optional.empty();
+        } else {
+            return Optional.ofNullable(m.get(name));
+        }
     }
 
     // {body-json={}, params={path={}, querystring={boo=2, hello=true},
