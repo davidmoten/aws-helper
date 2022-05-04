@@ -12,6 +12,6 @@ class Util {
         // TODO raise bug report with AWS
         // TODO do we need to worry about newlines in error messages further down the
         // callstack (cause)?
-        return message.replace("\n", "\\n");
+        return message == null ? null: message.replace("\n", "\\n");
     }
 }
