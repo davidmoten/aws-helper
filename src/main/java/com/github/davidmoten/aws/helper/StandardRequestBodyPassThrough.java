@@ -143,7 +143,7 @@ public final class StandardRequestBodyPassThrough {
 
     public Optional<String> queryStringParameter(String name) {
         @SuppressWarnings("unchecked")
-        Map<String, String> m = (Map<String, String>) map.get("querystring");
+        Map<String, String> m = (Map<String, String>) params(map).get("querystring");
         if (m == null) {
             return Optional.empty();
         } else {
